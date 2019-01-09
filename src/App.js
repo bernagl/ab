@@ -1,28 +1,41 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Router from './router'
+import './App.css'
+import Admin from './views/Admin'
+// import { authState } from './actions/firebaseAuth'
+import { authState } from './actions/redux-actions'
+// import Loading from './components/Loader'
+import LoadingWrapper from './components/Wrappers/LoadingWrapper'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+
 
 class App extends Component {
+  componentDidMount() {
+    this.props.authState()
+  }
+
   render() {
+    const { user, loading } = this.props.auth
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <LoadingWrapper loading={loading}>
+        {user ? (
+          <Admin>
+            <Router auth={user} />
+          </Admin>
+        ) : (
+          <Router auth={user} />
+        )}
+      </LoadingWrapper>
+    )
   }
 }
 
-export default App;
+const mapStateToProps = ({ auth }) => ({ auth })
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { authState }
+  )(App)
+)
