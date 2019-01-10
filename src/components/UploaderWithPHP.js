@@ -3,7 +3,7 @@ import Icon from 'antd/lib/icon'
 import Tooltip from 'antd/lib/tooltip'
 import axios from 'axios'
 import { FILE_PATH } from '../constants'
-import Input from './F/UploaderInput'
+import Input from './Form/UploaderInput'
 
 export default class Uploader extends React.Component {
   state = {

@@ -1,37 +1,38 @@
 import React from 'react'
 import Parent from './Wrapper'
-import Radio from 'antd/lib/radio'
+import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
+const { TextArea } = Input
 
-const { Group } = Radio
-export const Option = Radio
-
-export const RadioButton = props => (
+export const Field = props => (
   <Parent {...props}>
     {({ onChange, onBlur, value }) => {
       return (
-        <Group
+        <TextArea
           placeholder={props.placeholder}
-          id={props.name}
           name={props.name}
+          value={value}
+          id={props.name}
           onChange={({ target: { value } }) => onChange(value)}
-          onBlur={onBlur}
-        >
-          {props.children}
-        </Group>
+          onBlur={({ target: { value } }) => onBlur(value)}
+          type={props.type}
+          rows={props.rows}
+        />
       )
     }}
   </Parent>
 )
 
-RadioButton.defaultProps = {
+export default Field
+
+Field.defaultProps = {
   label: '',
   placeholder: '',
   type: 'text'
 }
 
-RadioButton.propTypes = {
-  label: PropTypes.string,
+Field.propTypes = {
+  // label: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   type: PropTypes.string

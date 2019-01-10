@@ -10,7 +10,18 @@ class E404 extends Component {
         <CenterWrapper adminLayout>
           <div className="row center-text">
             <div className="col-12">
-              <h2>Error 404: Ruta no encontrada</h2>
+              <h2>
+                Error 404
+                <span
+                  style={{
+                    padding: 1,
+                    borderRight: 1,
+                    margin: 4,
+                    backgroundColor: 'black'
+                  }}
+                />
+                Ruta no encontrada
+              </h2>
             </div>
             <div className="col-12">
               <Link to="/">Volver</Link>

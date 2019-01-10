@@ -2,6 +2,7 @@ import { getDocumentsByModel as gdbm } from './firebaseActions'
 import { auth, db } from './firebase-config'
 
 export const getDocumentsByModel = model => async dispatch => {
+  console.log(model)
   const payload = await gdbm(model)
   dispatch({ type: 'DOCUMENTS', payload })
 }
@@ -10,6 +11,8 @@ export const resetDocuments = () => dispatch =>
   dispatch({ type: 'DOCUMENTS', payload: [] })
 
 export const authState = () => async dispatch => {
+  const currentUser = await auth.currentUser
+  console.log(currentUser)
   auth.onAuthStateChanged(user => {
     if (user) {
       return db

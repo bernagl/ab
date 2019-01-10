@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Form from '../components/Form/Form'
-import Input from '../components/F/Input'
-import { RadioButton, Option } from '../components/F/Radio'
+import Input from '../components/Form/Input'
+import { RadioButton, Option } from '../components/Form/Radio'
 import Notification from '../components/Notification'
 import { register } from '../actions/firebaseAuth'
 import AuthWrapper from '../components/Wrappers/AuthWrapper'
@@ -21,6 +21,7 @@ class Register extends Component {
           fullSubmitButton
           title="Registro"
           centeredTitle
+          shouldUpdate
         >
           <Input
             name="name"

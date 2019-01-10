@@ -7,9 +7,9 @@ export default class Datatable extends Component {
     search: '',
     result: null,
     currentPage: 1,
-    searchData: [],
+    searchData: null,
     pages: 0,
-    currentData: [],
+    currentData: null,
     order: null
   }
 
@@ -164,26 +164,28 @@ export default class Datatable extends Component {
               </tr>
             </thead>
             <tbody>
-              {currentData.map((element, i) => (
-                <tr className="table-row" key={i}>
-                  {columns.map(({ key, className, Render }, j) => (
-                    <td className={className} key={j}>
-                      {Render ? <Render {...element} /> : element[key]}
-                    </td>
-                  ))}
-                </tr>
-              ))}
+              {currentData &&
+                currentData.map((element, i) => (
+                  <tr className="table-row" key={i}>
+                    {columns.map(({ key, className, Render }, j) => (
+                      <td className={className} key={j}>
+                        {Render ? <Render {...element} /> : element[key]}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
         {footer && (
           <div className="footer">
-            {currentData.length <= 0 && !Loading && (
+            {currentData && currentData.length === 0 && (
               <div className="empty-table">
                 <EmptyText />
               </div>
             )}
-            {Loading && data.length === 0 && (
+
+            {!currentData && (
               <div className="loading">
                 <Loading />
               </div>
@@ -218,7 +220,7 @@ export default class Datatable extends Component {
 }
 
 Datatable.defaultProps = {
-  EmptyText: () => <span>No data found</span>,
+  EmptyText: () => <span>No se encontró ningún registro</span>,
   Loading: () => <span>Cargando</span>,
   pagination: 50,
   header: true,

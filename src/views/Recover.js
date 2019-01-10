@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Form from '../components/Form/Form'
-import Input from '../components/F/Input'
+import Input from '../components/Form/Input'
 import AuthWrapper from '../components/Wrappers/AuthWrapper'
 import { recover } from '../actions/firebaseAuth'
 import Notification from '../components/Notification'

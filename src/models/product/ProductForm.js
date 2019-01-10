@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Input from '../../components/F/Input'
+import Input from '../../components/Form/Input'
 import ModelWrapper from '../ModelWrapper'
 
 export default ({

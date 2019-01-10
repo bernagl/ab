@@ -7,8 +7,8 @@ import {
 import Form from '../../components/Form/Form'
 import Notification from '../../components/Notification'
 import moment from 'moment'
-import Input from '../../components/F/Input'
-import { Option, Select } from '../../components/F/Select'
+import Input from '../../components/Form/Input'
+import { Option, Select } from '../../components/Form/Select'
 import { Link } from 'react-router-dom'
 import Icon from 'antd/lib/icon'
 

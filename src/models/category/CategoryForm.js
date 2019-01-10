@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import Input from '../../components/F/Input'
+import Input from '../../components/Form/Input'
 import ModelWrapper from '../ModelWrapper'
 import Divider from 'antd/lib/divider'
 import Icon from 'antd/lib/icon'
@@ -8,7 +8,7 @@ import Table from '../../components/Table'
 import Uploader from '../../components/UploaderWithPHP'
 import { getDocument } from '../../actions/firebaseActions'
 import { Link } from 'react-router-dom'
-import { Select, Option } from '../../components/F/Select'
+import { Select, Option } from '../../components/Form/Select'
 
 const RenderRightSide = props => <RightSideClass {...props} />
 

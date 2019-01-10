@@ -4,7 +4,7 @@ import Divider from 'antd/lib/divider'
 import message from 'antd/lib/message'
 import Alert from 'antd/lib/alert'
 import Form from '../../components/Form/Form'
-import Input from '../../components/F/Input'
+import Input from '../../components/Form/Input'
 import { db } from '../../actions/firebase-config'
 
 class ProviderDeleteForm extends Component {

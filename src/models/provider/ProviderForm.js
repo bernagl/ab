@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import Input from '../../components/F/Input'
-import TextArea from '../../components/F/Textarea'
+import Input from '../../components/Form/Input'
+import TextArea from '../../components/Form/Textarea'
 import Checkbox from '../../components/Form/Checkbox'
 import U from '../../components/UploaderWithPHP'
 // import U from '../../components/UploaderWithPHP'
@@ -19,7 +19,7 @@ import {
 import { Item } from 'antd/lib/form'
 import moment from 'moment'
 import Notification from '../../components/Notification'
-import { Select, Option } from '../../components/F/Select'
+import { Select, Option } from '../../components/Form/Select'
 
 // const { TextArea } = I
 

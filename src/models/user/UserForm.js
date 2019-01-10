@@ -1,10 +1,26 @@
 import React, { Fragment } from 'react'
-import Input from '../../components/F/Input'
+import Input from '../../components/Form/Input'
 import ModelWrapper from '../ModelWrapper'
 import Icon from 'antd/lib/icon'
-import { Select, Option } from '../../components/F/Select'
+import { Select, Option } from '../../components/Form/Select'
+import { createUser, updateUser } from '../../actions/userActions'
 
 const RenderRightSide = snap => <RightSideClass {...snap} />
+
+const submit = uid => async model => {
+  const response = uid
+    ? await updateUser({
+        ...model,
+        uid,
+        phoneNumber: '+52' + model.phoneNumber
+      })
+    : await createUser({
+        ...model,
+        phoneNumber: '+52' + model.phoneNumber
+      })
+
+  return response
+}
 
 export default ({
   match: {
@@ -19,8 +35,9 @@ export default ({
       modelLabel="Usuarios"
       redirect="/users"
       RenderRightSide={RenderRightSide}
+      submit={submit(id)}
     >
-      {({ name, email, phone, status }) => {
+      {({ name, email, phoneNumber = '', status }) => {
         return (
           <Fragment>
             <Input
@@ -42,19 +59,19 @@ export default ({
               defaultValue={email}
             />
             <Input
-              name="phone"
+              name="phoneNumber"
               placeholder="Celular"
               label="Celular"
               validations={{ isNumeric: true, minLength: 10, maxLength: 10 }}
               validationError="Ingresa un número de celular válido"
               required
-              defaultValue={phone}
+              defaultValue={phoneNumber.replace('+52', '')}
             />
             <Select
               name="status"
               label="Status"
-              defaultValue={status ? status : 2}
-              value={status}
+              defaultValue={status ? +status : 1}
+              // value={status}
             >
               <Option value={1}>Activo</Option>
               <Option value={2}>Inactivo</Option>

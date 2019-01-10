@@ -32,20 +32,20 @@ export default () => (
           {
             key: 'phone',
             label: 'Teléfono',
-            Render: ({ phone }) => (
+            Render: ({ phoneNumber }) => (
               <Fragment>
-                <a href={`tel+:${phone}`}>
+                <a href={`tel+:${phoneNumber}`}>
                   <Icon type="phone" theme="outlined" />
                 </a>
                 {'     '}
-                <span>{phone}</span>
+                <span>{phoneNumber}</span>
               </Fragment>
             )
           },
           {
             label: 'Status',
             Render: ({ status }) =>
-              status === 1 ? (
+              status == 1 ? (
                 <Badge status="success" text="Activo" />
               ) : (
                 <Badge status="default" text="Inactivo" />

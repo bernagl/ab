@@ -34,7 +34,7 @@ export default ({ auth }) => {
     <Switch>
       <NoProtectedRoute path="/login" component={Login} />
       <NoProtectedRoute path="/recover" component={Recover} />
-      {/* <NoProtectedRoute path="/register" component={Register} /> */}
+      <NoProtectedRoute path="/register" component={Register} />
       {/* <ProtectedRoute path="/" component={Admin} exact auth={auth} /> */}
       <ProtectedRoute path="/banner" component={Banner} auth={auth} />
       <ProtectedRoute

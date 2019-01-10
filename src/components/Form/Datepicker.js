@@ -1,76 +1,38 @@
-// import React from 'react'
-// import { withFormsy } from 'formsy-react'
-// import { Form, DatePicker } from '../../antd'
-// import moment from 'moment'
-// import locale from 'antd/lib/date-picker/locale/es_ES'
-// const { Item } = Form
+import React from 'react'
+import Parent from './Wrapper'
+import DatePicker from 'antd/lib/date-picker'
+import PropTypes from 'prop-types'
 
-// class MyInput extends React.Component {
-//   static defaultProps = {
-//     defaultValue: null,
-//     feedBack: true,
-//     format: 'LL',
-//     datePickerFormat: 'DD-MM-YYYY'
-//   }
+export const Field = props => (
+  <Parent {...props}>
+    {({ onChange, onBlur, value }) => {
+      return (
+        <DatePicker
+          value={value}
+          // locale={locale}
+          placeholder={props.placeholder}
+          id={props.name}
+          format={props.format}
+          name={props.name}
+          onChange={onChange}
+          onBlur={onBlur}
+          className="full-width"
+        />
+      )
+    }}
+  </Parent>
+)
 
-//   state = { error: false, blurred: false }
+export default Field
 
-//   componentDidMount() {
-//     const { defaultValue } = this.props
-//     const isValidDate = defaultValue ? moment(defaultValue) : null
-//     this.setState(
-//       ({ blurred }) => (defaultValue ? { blurred: !blurred } : { blurred }),
-//       () => isValidDate && this.props.setValue(isValidDate)
-//     )
-//   }
+Field.defaultProps = {
+  validationError: 'Ingresa una fecha válida',
+  placeholder: 'Ingresa una fecha',
+  format: 'DD-MM-YYYY'
+}
 
-//   changeValue = value => {
-//     const date = value ? moment(value).format(this.props.format) : undefined
-//     this.props.setValue(date)
-//   }
-
-//   onBlur = () => {
-//     this.setState({ blurred: true })
-//   }
-
-//   render() {
-//     const errorMessage = this.props.getErrorMessage()
-//     const value = this.props.getValue()
-//     const val = value ? moment(value) : null
-//     const {
-//       datePickerFormat,
-//       feedBack,
-//       label,
-//       name,
-//       placeholder,
-//       required,
-//       type
-//     } = this.props
-//     const { blurred } = this.state
-//     return (
-//       <div>
-//         <Item
-//           layout="vertical"
-//           label={`${required ? '*' : ''} ${label}`}
-//           validateStatus={errorMessage ? 'error' : value ? 'success' : null}
-//           help={blurred ? (errorMessage ? errorMessage : null) : null}
-//           hasFeedback={feedBack && blurred}
-//         >
-//           <DatePicker
-//             value={val}
-//             locale={locale}
-//             placeholder={placeholder}
-//             id={name}
-//             format={datePickerFormat}
-//             name={name}
-//             type={type}
-//             onChange={this.changeValue}
-//             onBlur={this.onBlur}
-//           />
-//         </Item>
-//       </div>
-//     )
-//   }
-// }
-
-// export default withFormsy(MyInput)
+Field.propTypes = {
+  name: PropTypes.string.isRequired,
+  format: PropTypes.string,
+  placeholder: PropTypes.string
+}
