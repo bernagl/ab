@@ -17,6 +17,14 @@ export const getDocument = collection => id => {
     .catch(e => 404)
 }
 
+export const deleteDocument = (collection, id) =>
+  db
+    .ref(collection)
+    .child(id)
+    .remove()
+    .then(() => 202)
+    .catch(e => 404)
+
 export const getDocumentsByModel = model => {
   let data = []
   return db
